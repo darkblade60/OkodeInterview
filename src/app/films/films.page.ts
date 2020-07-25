@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FilmsService} from './films.service'
 import { OMDBService, SearchType } from './omdb.service';
 import { Observable } from 'rxjs';
 

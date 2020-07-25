@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
@@ -9,7 +8,6 @@
 </ion-header>
  
 <ion-content padding>
- 
   <ion-card *ngIf="information">
     <ion-card-header>
       <ion-card-title  class="ion-text-center">
@@ -18,14 +16,12 @@
       <ion-card-subtitle  class="ion-text-center">
         {{ information.Year }}
       </ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content text-center>
-
       <ion-item lines="none">
         <ion-img [src]="information.Poster" class="info-img" *ngIf="information.Poster && information.Poster != 'N/A'; else sinPoster">  </ion-img>    
         <ng-template #sinPoster><ion-img [src]="'https://assets.imgix.net/examples/clouds.jpg?monochrome=ff6598cc&txt-font=Futura%20Condensed%20Medium&txt-align=middle%2Ccenter&txt-color=ff2e4357&txt-size=62&txt=' + information.Title + '&fit=crop&h=800&w=800&blur=800'" class="info-img"></ion-img></ng-template>
       </ion-item>
-      
+    </ion-card-header>
+      <ion-card-content text-center>
       <ion-item lines="none">
         <ion-icon name="document-text" slot="start"></ion-icon>
         <ion-text>{{ information.Plot }} </ion-text>
@@ -50,12 +46,6 @@
         <ion-icon name="volume-medium" slot="start"></ion-icon>
         <ion-label text-wrap>{{ information.Language }}</ion-label>
       </ion-item>
- 
-      <ion-button expand="full" (click)="openWebsite()" *ngIf="information.Website && information.Website != 'N/A'">
-        <ion-icon name="open" slot="start"></ion-icon>
-        Open Website
-      </ion-button>
     </ion-card-content>
   </ion-card>
-  
 </ion-content>

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Videoteca</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+ 
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)"></ion-searchbar>
+ 
+  <ion-item>
+    <ion-label>Select Searchtype</ion-label>
+    <ion-select debounce="500" [(ngModel)]="type" (ionChange)="searchChanged($event)">
+      <ion-select-option value="">All</ion-select-option>
+      <ion-select-option value="movie">Movie</ion-select-option>
+      <ion-select-option value="series">Series</ion-select-option>
+      <ion-select-option value="episode">Episode</ion-select-option>
+    </ion-select>
+  </ion-item>
+ 
+  <ion-list>
+ 
+    <ion-item button *ngFor="let item of (results | async)" [routerLink]="['/', 'films', item.imdbID]">
+      <ion-avatar slot="start">
+        <ion-img [src]="item.Poster" *ngIf="item.Poster && item.Poster != 'N/A'; else sinPoster">  </ion-img>    
+        <ng-template #sinPoster><ion-img [src]="'https://assets.imgix.net/examples/clouds.jpg?monochrome=ff6598cc&txt-font=Futura%20Condensed%20Medium&txt-align=middle%2Ccenter&txt-color=ff2e4357&txt-size=62&txt=' + item.Title.substr(0,2) + '&fit=crop&h=80&w=800&blur=80'" class="info-img"></ion-img></ng-template>
+      </ion-avatar>
+ 
+      <ion-label text-wrap>
+        <h3>{{ item.Title }}</h3>
+        {{ item.Year }}
+      </ion-label>
+ 
+      <ion-icon slot="end" *ngIf="item.Type == 'movie'" name="videocam"></ion-icon>
+      <ion-icon slot="end" *ngIf="item.Type == 'series'" name="tv"></ion-icon>
+      <ion-icon slot="end" *ngIf="item.Type == 'game'" name="logo-game-controller-b"></ion-icon>
+ 
+    </ion-item>
+ 
+  </ion-list>
+ 
+</ion-content>

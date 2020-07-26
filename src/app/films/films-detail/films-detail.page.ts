@@ -9,22 +9,16 @@ import { OMDBService, SearchType } from '../omdb.service';
   styleUrls: ['./films-detail.page.scss'],
 })
 export class FilmsDetailPage implements OnInit {
-
-
   information = null;
 
   constructor(private activatedRoute: ActivatedRoute, private omdbService: OMDBService) { }
 
   ngOnInit() {
-
-
     let id = this.activatedRoute.snapshot.paramMap.get('imdbID');
  
     this.omdbService.getDetails(id).subscribe(result => {
       this.information = result;
     });
+
   }
-
-
-
 }

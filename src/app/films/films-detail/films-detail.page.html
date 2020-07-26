@@ -7,9 +7,9 @@
   </ion-toolbar>
 </ion-header>
  
-<ion-content padding>
+<ion-content>
   <ion-card *ngIf="information">
-    <ion-card-header>
+    <ion-card-header class="header-film">
       <ion-card-title  class="ion-text-center">
         {{ information.Title }}
       </ion-card-title>
@@ -22,30 +22,30 @@
       </ion-item>
     </ion-card-header>
       <ion-card-content text-center>
-      <ion-item lines="none">
-        <ion-icon name="document-text" slot="start"></ion-icon>
-        <ion-text>{{ information.Plot }} </ion-text>
-      </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="document-text" slot="start"></ion-icon>
+          <ion-text>{{ information.Plot }} </ion-text>
+        </ion-item>
 
-      <ion-item lines="none">
-        <ion-icon name="star-half" slot="start"></ion-icon>
-        <ion-label>{{ information.imdbRating }} <p class="rating-info"> *Basado en IMDB</p></ion-label>
-      </ion-item>
- 
-      <ion-item lines="none">
-        <ion-icon name="clipboard" slot="start"></ion-icon>
-        <ion-label text-wrap>{{ information.Director }}</ion-label>
-      </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="star-half" slot="start"></ion-icon>
+          <ion-label>{{ information.imdbRating }} <p class="rating-info"> *Basado en IMDB</p></ion-label>
+        </ion-item>
+  
+        <ion-item lines="none">
+          <ion-icon name="clipboard" slot="start"></ion-icon>
+          <ion-label text-wrap>{{ information.Director }}</ion-label>
+        </ion-item>
 
-      <ion-item lines="none">
-        <ion-icon name="people-circle-outline" slot="start"></ion-icon>
-        <ion-label text-wrap>{{ information.Actors }}</ion-label>
-      </ion-item>
-       
-      <ion-item lines="none">
-        <ion-icon name="volume-medium" slot="start"></ion-icon>
-        <ion-label text-wrap>{{ information.Language }}</ion-label>
-      </ion-item>
+        <ion-item lines="none">
+          <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+          <ion-label text-wrap>{{ information.Actors }}</ion-label>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-icon name="volume-medium" slot="start"></ion-icon>
+          <ion-label text-wrap>{{ information.Language }}</ion-label>
+        </ion-item>
     </ion-card-content>
   </ion-card>
 </ion-content>

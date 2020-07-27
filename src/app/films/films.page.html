@@ -25,8 +25,7 @@
   
   <ion-grid *ngIf="view == 'cards' && (respuesta == 'ini' || respuesta == 'default')">
     <ion-row>
-      <ion-col *ngFor="let item of sanidad" [routerLink]="['/', 'films', item.imdbID]" class="card-film"  >
-        <div *ngIf="item.Title">
+      <ion-col *ngFor="let item of randomFilms" [routerLink]="['/', 'films', item.imdbID]" class="card-film"  >
         <ion-card class="card-film" >
           <ion-img [src]="item.Poster" *ngIf="item.Poster && item.Poster != 'N/A'; else sinPoster" class="movie-image"></ion-img>   
           <ng-template #sinPoster><ion-img [src]="'https://assets.imgix.net/examples/clouds.jpg?monochrome=ff6598cc&txt-font=Futura%20Condensed%20Medium&txt-align=middle%2Ccenter&txt-color=ff2e4357&txt-size=62&txt=' + item.Title.substr(0,2) + '&fit=crop&h=200&w=180&blur=80'" class="movie-image"></ion-img></ng-template>
@@ -40,7 +39,6 @@
             <ion-card-subtitle>{{ item.Title }}</ion-card-subtitle>
           </ion-card-header>
         </ion-card>
-      </div>
       </ion-col>
     </ion-row>
   </ion-grid> 
@@ -48,8 +46,7 @@
 
 
   <ion-list *ngIf="view == 'lista' && (respuesta == 'ini' || respuesta == 'default')">
-    <span *ngFor="let item of sanidad">
-      <ion-item *ngIf="item.Title" [routerLink]="['/', 'films', item.imdbID]">
+      <ion-item *ngFor="let item of randomFilms" [routerLink]="['/', 'films', item.imdbID]">
         <ion-avatar slot="start">
           <ion-img [src]="item.Poster" *ngIf="item.Poster && item.Poster != 'N/A'; else sinPoster">  </ion-img>    
           <ng-template #sinPoster><ion-img [src]="'https://assets.imgix.net/examples/clouds.jpg?monochrome=ff6598cc&txt-font=Futura%20Condensed%20Medium&txt-align=middle%2Ccenter&txt-color=ff2e4357&txt-size=62&txt=' + item.Title.substr(0,2) + '&fit=crop&h=80&w=800&blur=80'" class="info-img"></ion-img></ng-template>
@@ -65,7 +62,6 @@
         <ion-icon slot="end" *ngIf="item.Type == 'episode'" name="tv"></ion-icon>
     
       </ion-item>
-    </span>
   </ion-list>
 
 

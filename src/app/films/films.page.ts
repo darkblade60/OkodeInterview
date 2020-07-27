@@ -12,22 +12,34 @@ import { map } from 'rxjs/operators';
 export class FilmsPage implements OnInit {
   results: Observable<any>;
   movie: Object;
-  sanidad: Object[];
+  randomFilms: Object[];
   searchTerm: string = '';
   type: SearchType = SearchType.all;
   view: string = "cards";
   respuesta: string = "ini";
-  arrayString: string[]
+  arrayString: string[];
+  errorBusqueda: Object = '{Response: "False", Error: "Error getting data."}';
 
   constructor(private omdbService: OMDBService) { }
 
   ngOnInit() {
 
 
-    this.sanidad = []
+    this.randomFilms = []
     let numberOfMovies = 0;
     for (numberOfMovies = 0; numberOfMovies <= 9; numberOfMovies++) {      
-      this.omdbService.getRandomMovies().subscribe(value => { if (value) {  this.sanidad.push(value) }});
+      this.omdbService.getRandomMovies().subscribe(value => { if (value) {  
+
+        this.randomFilms.push(value) 
+        if(JSON.stringify(this.randomFilms[this.randomFilms.length-1]).substring(2,3) === 'R'){
+           this.randomFilms.pop();
+        }
+  
+     
+      
+      }});
+
+        
     }
   }
 

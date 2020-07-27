@@ -18,8 +18,8 @@ export enum SearchType {
 
 export class OMDBService {
   url = 'https://www.omdbapi.com/';
-  //apiKey = 'ff761019';
-    apiKey = 'bfe4716a';
+    apiKey = 'ff761019';
+   // apiKey = 'bfe4716a';
 
   
   randomObservable: Observable<any>

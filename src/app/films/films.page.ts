@@ -16,9 +16,9 @@ export class FilmsPage implements OnInit {
   searchTerm: string = '';
   type: SearchType = SearchType.all;
   view: string = "cards";
-  respuesta: string = "ini";
+  answer: string = "ini";
   arrayString: string[];
-  errorBusqueda: Object = '{Response: "False", Error: "Error getting data."}';
+  errorSearch: Object = '{Response: "False", Error: "Error getting data."}';
 
   constructor(private omdbService: OMDBService) { }
 
@@ -46,13 +46,13 @@ export class FilmsPage implements OnInit {
 
   searchChanged() {
     if (!this.searchTerm) { 
-        this.respuesta = "default"
+        this.answer = "default"
     } else {
         this.results = this.omdbService.searchData(this.searchTerm, this.type);
-        this.results.subscribe(comprobar => {
-          if (!comprobar) {  this.respuesta = "ko"  }
+        this.results.subscribe(checking => {
+          if (!checking) {  this.answer = "ko"  }
           else {     
-            this.respuesta = "ok"
+            this.answer = "ok"
             this.results = this.results.pipe(map(results => {
             return results.filter( results => results.Type !== "game");}))            
           }
